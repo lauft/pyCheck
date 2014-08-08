@@ -6,15 +6,16 @@ import pycheck.checkpath
 
 
 class CheckPathTestCase(unittest.TestCase):
-    """Sample test case"""
+    """Checkpath test case"""
 
     def setUp(self):
         """ Setting up for the test """
         os.makedirs("tmp", 0755)
         os.makedirs("tmp/foo")
         open("tmp/bar", "a")
+        os.chmod("tmp/bar", 0644)
         open("tmp/exe", "a")
-        os.chmod("tmp/exe", 700)
+        os.chmod("tmp/exe", 0700)
 
     def tearDown(self):
         """Cleaning up after the test"""
@@ -69,3 +70,11 @@ class CheckPathTestCase(unittest.TestCase):
     def test_directory_does_not_pass_as_executeable(self):
         """directory is not confused with executable"""
         self.assertFalse(pycheck.checkpath.CheckPath("tmp/foo").is_an_executable(), "confused directory 'tmp/foo' with executable")
+
+    def test_permission_bits_are_identified(self):
+        """permission bits are identified"""
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp").has_permissions(0755), "did not identify permissions for 'tmp'")
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp/foo").has_permissions(0775), "did not identify permissions for 'tmp/foo'")
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp/bar").has_permissions(0644), "did not identify permissions for 'tmp/bar'")
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp/exe").has_permissions(0700), "did not identify permissions for 'tmp/exe'")
+        self.assertFalse(pycheck.checkpath.CheckPath("tmp/exe").has_permissions(0644), "did not identify permissions for 'tmp/exe'")
