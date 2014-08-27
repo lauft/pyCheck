@@ -4,7 +4,7 @@ import os
 from stat import *
 
 
-class CheckPath():
+class CheckPath(object):
     """
     check whether a path meets certain requirements
     """
@@ -13,6 +13,10 @@ class CheckPath():
         self.path = path
 
     def does_exist(self):
+        """
+
+        :rtype : bool
+        """
         return os.path.exists(self.path)
 
     def does_not_exist(self):
@@ -37,3 +41,10 @@ class CheckPath():
 
     def has_permissions(self, mode):
         return S_IMODE(os.stat(self.path).st_mode) == mode
+
+    def does_contain(self, item):
+        path = os.path.join(self.path, item)
+        return os.path.exists(path)
+
+    def does_not_contain(self, item):
+        return not self.does_contain(item)

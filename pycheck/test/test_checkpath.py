@@ -78,3 +78,10 @@ class CheckPathTestCase(unittest.TestCase):
         self.assertTrue(pycheck.checkpath.CheckPath("tmp/bar").has_permissions(0644), "did not identify permissions for 'tmp/bar'")
         self.assertTrue(pycheck.checkpath.CheckPath("tmp/exe").has_permissions(0700), "did not identify permissions for 'tmp/exe'")
         self.assertFalse(pycheck.checkpath.CheckPath("tmp/exe").has_permissions(0644), "did not identify permissions for 'tmp/exe'")
+
+    def test_contained_item_is_detected(self):
+        """contained item is detected"""
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp").does_contain("foo"), "did not detect directory 'tmp' contains 'foo'")
+        self.assertFalse(pycheck.checkpath.CheckPath("tmp").does_not_contain("foo"), "did not detect directory 'tmp' contains 'foo'")
+        self.assertTrue(pycheck.checkpath.CheckPath("tmp").does_not_contain("baz"), "did not detect directory 'tmp' does not contain 'baz'")
+        self.assertFalse(pycheck.checkpath.CheckPath("tmp").does_contain("baz"), "did not detect directory 'tmp' does not contain 'baz'")
