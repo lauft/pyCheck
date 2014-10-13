@@ -40,7 +40,8 @@ class CheckPath(object):
         return os.stat(self.path).st_mode & S_IXUSR
 
     def has_permissions(self, mode):
-        return S_IMODE(os.stat(self.path).st_mode) == mode
+        file_mode = S_IMODE(os.stat(self.path).st_mode) & 0777
+        return file_mode == mode
 
     def does_contain(self, item):
         path = os.path.join(self.path, item)
