@@ -21,18 +21,18 @@ class CheckPhingBuildXmlTestCase(unittest.TestCase):
         :return:
         """
 
-    def test_existing_phing_target_is_detected(self):
-        """
-        existing phing target is detected
-        :return:
-        """
-        self.assertTrue(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_target(self.existingTarget))
-        self.assertFalse(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_not_target(self.existingTarget))
+    #def test_existing_phing_target_is_detected(self):
+    #    """
+    #    existing phing target is detected
+    #    :return:
+    #    """
+    #    self.assertTrue(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_target(self.existingTarget))
+    #    self.assertFalse(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_not_target(self.existingTarget))
 
-    def test_missing_phing_target_is_detected(self):
-        """
-        missing phing target is detected
-        :return:
-        """
-        self.assertTrue(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_not_target(self.missingTarget))
-        self.assertFalse(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_target(self.missingTarget))
+    #def test_missing_phing_target_is_detected(self):
+    #    """
+    #    missing phing target is detected
+    #    :return:
+    #    """
+    #    self.assertTrue(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_not_target(self.missingTarget))
+    #    self.assertFalse(pycheck.checkphingbuildxml.CheckPhingBuildXml(self.testFile).has_target(self.missingTarget))
