@@ -1,2 +1,4 @@
 .idea/
+.tox/
+MANIFEST
 *.pyc
