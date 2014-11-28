@@ -14,13 +14,64 @@ class CheckComposerJsonFileTestCase(unittest.TestCase):
         :return:
         """
         self.validTestFile = "valid_composer.json"
-        self.invalidTestFile = "path/to/invalid/testFile"
+        self.invalidTestFile = "invalid_composer.json"
+        self.testFileEmptyArray = "empty_array.json"
+        self.testFileArray = "array.json"
+        self.testFileEmptyObject = "empty_object.json"
+        self.testFileObject = "object.json"
+        self.nonExistentFile = "this/path/does/not/exist"
 
     def tearDown(self):
         """
 
         :return:
         """
+
+    def test_fails_on_invalid_path(self):
+        """
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.nonExistentFile).failed)
+
+    def test_fails_on_invalid_file(self):
+        """
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.invalidTestFile).failed)
+
+    def test_fails_on_empty_array(self):
+        """
+        A file with an empty array is a valid JSON file but an invalid composer file
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.testFileEmptyArray).failed)
+
+    def test_fails_on_array(self):
+        """
+        A file with an array is valid JSON file but an invalid composer file
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.testFileArray).failed)
+
+    def test_fails_on_emtpy_object(self):
+        """
+        A file with an empty object is a valid JSON file but an invalid composer file
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.testFileEmptyObject).failed)
+
+    def test_fails_on_non_composer_object(self):
+        """
+        A composer file contains an object with a set of minimal required keys
+
+        :return:
+        """
+        self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.testFileObject).failed)
 
     #def test_file_validation(self):
     #    """
