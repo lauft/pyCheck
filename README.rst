@@ -5,9 +5,9 @@ pyCheck can be used to check whether a project adheres to certain guidelines.
 For this purpose it provides a set of checkers, each for a specific task. 
 Currently the following checker types exist:
 
-    - CheckPath
-    - CheckJson
-    - CheckComposerJson
+- CheckPath
+- CheckJson
+- CheckComposerJson
 
 Each checker is invoked with the target as its constructor argument (see examples below).
 
@@ -25,10 +25,19 @@ CheckJson
 ---------
 Checks JSON files
 
+.. code:: python
+
+    json = CheckJson('path/to/file.json')
+    json.does_contain_member('foo')
+
 CheckComposerJson
 -----------------
 Checks composer JSON files (i.e. composer.json)
 
+.. code:: python
+
+    composer = CheckComposer('path/to/composer.json')
+    composer.does_contain_member('foo')
 
 Usage
 =====
