@@ -78,4 +78,11 @@ class CheckJsonFileTestCase(unittest.TestCase):
         A member is a name/value pair within a JSON object
         :return:
         """
-        self.assertTrue(pycheck.checkjson.CheckJson(self.testFileObject).does_contain_member(''))
+        self.assertTrue(
+            pycheck.checkjson.CheckJson(self.testFileObject).does_contain_member('foo'),
+            'Test file contains key "foo" - not found!'
+        )
+        self.assertFalse(
+            pycheck.checkjson.CheckJson(self.testFileObject).does_contain_member('bar'),
+            'Test file does not contain key "bar" - however found!'
+        )
