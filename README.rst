@@ -9,27 +9,29 @@ Currently the following checker types exist:
 - CheckPhingBuildXml
 
 Each checker is invoked with the target as its constructor argument
+
 .. code:: python
-path = CheckPath('path/to/check')
-path.does_exist()
-path.is_file()
+
+    path = CheckPath('path/to/check')
+    path.does_exist()
+    path.is_file()
 
 CheckPath
 ---------
 Checks file paths
 
+CheckJson
+---------
+Checks JSON files
+
 CheckComposerJson
 -----------------
-Checks composer JSON files (mostly composer.json)
-
-CheckPhingBuildXml
-------------------
-Checks phing build files (mostly build.xml)
+Checks composer JSON files (i.e. composer.json)
 
 
 Usage
 =====
-You can use it by writing a python script where you instantiate the required checkers
+You can use it by writing a python script where you instantiate the required checkers:
 
 .. code-block:: python
 
