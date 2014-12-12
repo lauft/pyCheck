@@ -4,21 +4,22 @@ pyCheck
 pyCheck can be used to check whether a project adheres to certain guidelines.
 For this purpose it provides a set of checkers, each for a specific task. 
 Currently the following checker types exist:
-- CheckPath
-- CheckComposerJson
-- CheckPhingBuildXml
 
-Each checker is invoked with the target as its constructor argument
+    - CheckPath
+    - CheckJson
+    - CheckComposerJson
+
+Each checker is invoked with the target as its constructor argument (see examples below).
+
+CheckPath
+---------
+Checks file paths
 
 .. code:: python
 
     path = CheckPath('path/to/check')
     path.does_exist()
     path.is_file()
-
-CheckPath
----------
-Checks file paths
 
 CheckJson
 ---------
