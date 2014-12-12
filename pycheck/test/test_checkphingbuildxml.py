@@ -6,7 +6,7 @@ import pycheck.checkphingbuildxml
 
 
 class CheckPhingBuildXmlTestCase(unittest.TestCase):
-    """CheckJsonFile test case"""
+    """CheckPhingBuildXml test case"""
 
     def setUp(self):
         """
