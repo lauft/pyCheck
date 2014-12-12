@@ -88,7 +88,7 @@ class CheckComposerJsonFileTestCase(unittest.TestCase):
     #    """
     #    self.assertTrue(pycheck.checkcomposerjson.CheckComposerJson(self.validTestFile).has_requirement(self.existingRequirement))
 
-    def test_contains_member(self):
+    def test_does_contain_member(self):
         """
 
         :return:
